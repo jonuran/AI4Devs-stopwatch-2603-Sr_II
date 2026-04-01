@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stopwatch & Countdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="app-card" aria-labelledby="app-title">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Time Tools</p>
+          <h1 id="app-title">Stopwatch & Countdown</h1>
+          <p class="subtitle">A fast, clean timer app with stopwatch and countdown modes.</p>
+        </div>
+
+        <button
+          id="fullscreenToggle"
+          class="icon-button"
+          type="button"
+          aria-label="Toggle fullscreen"
+          title="Toggle fullscreen"
+        >
+          ⛶
+        </button>
+      </header>
+
+      <nav class="mode-switcher" aria-label="Timer modes">
+        <button
+          id="stopwatchTab"
+          class="mode-tab is-active"
+          type="button"
+          data-mode="stopwatch"
+          aria-pressed="true"
+        >
+          Stopwatch
+        </button>
+        <button
+          id="countdownTab"
+          class="mode-tab"
+          type="button"
+          data-mode="countdown"
+          aria-pressed="false"
+        >
+          Countdown
+        </button>
+      </nav>
+
+      <section
+        id="stopwatchPanel"
+        class="panel is-active"
+        aria-labelledby="stopwatchTab"
+      >
+        <div class="display-wrap">
+          <div class="status-row">
+            <span class="status-badge" id="stopwatchStatus">Ready</span>
+            <span class="secondary-note">Precision: centiseconds</span>
+          </div>
+
+          <output
+            id="stopwatchDisplay"
+            class="time-display"
+            aria-live="polite"
+          >
+            00:00:00.00
+          </output>
+        </div>
+
+        <div class="controls" aria-label="Stopwatch controls">
+          <button id="stopwatchStart" class="btn btn-primary" type="button">Start</button>
+          <button id="stopwatchPause" class="btn" type="button" disabled>Pause</button>
+          <button id="stopwatchResume" class="btn" type="button" disabled>Resume</button>
+          <button id="stopwatchReset" class="btn btn-danger" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section
+        id="countdownPanel"
+        class="panel"
+        aria-labelledby="countdownTab"
+        hidden
+      >
+        <div class="input-grid">
+          <label class="field">
+            <span>Hours</span>
+            <input
+              id="hoursInput"
+              type="number"
+              min="0"
+              max="99"
+              step="1"
+              inputmode="numeric"
+              placeholder="00"
+              aria-label="Hours"
+            />
+          </label>
+
+          <label class="field">
+            <span>Minutes</span>
+            <input
+              id="minutesInput"
+              type="number"
+              min="0"
+              max="59"
+              step="1"
+              inputmode="numeric"
+              placeholder="00"
+              aria-label="Minutes"
+            />
+          </label>
+
+          <label class="field">
+            <span>Seconds</span>
+            <input
+              id="secondsInput"
+              type="number"
+              min="0"
+              max="59"
+              step="1"
+              inputmode="numeric"
+              placeholder="00"
+              aria-label="Seconds"
+            />
+          </label>
+        </div>
+
+        <div class="display-wrap">
+          <div class="status-row">
+            <span class="status-badge" id="countdownStatus">Set a time</span>
+            <span class="secondary-note" id="countdownHint">Enter a duration and press Start.</span>
+          </div>
+
+          <output
+            id="countdownDisplay"
+            class="time-display"
+            aria-live="polite"
+          >
+            00:00:00.00
+          </output>
+        </div>
+
+        <div class="controls" aria-label="Countdown controls">
+          <button id="countdownStart" class="btn btn-primary" type="button">Start</button>
+          <button id="countdownPause" class="btn" type="button" disabled>Pause</button>
+          <button id="countdownResume" class="btn" type="button" disabled>Resume</button>
+          <button id="countdownReset" class="btn btn-danger" type="button">Reset</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
